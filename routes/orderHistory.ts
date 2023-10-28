@@ -14,7 +14,7 @@ module.exports.orderHistory = function orderHistory () {
     const loggedInUser = security.authenticatedUsers.get(req.headers?.authorization?.replace('Bearer ', ''))
     if (loggedInUser?.data?.email && loggedInUser.data.id) {
       const email = loggedInUser.data.email
-      const updatedEmail = email.replace(/[aeiou]/gi, '*')
+      const updatedEmail = email
       const order = await orders.find({ email: updatedEmail })
       res.status(200).json({ status: 'success', data: order })
     } else {

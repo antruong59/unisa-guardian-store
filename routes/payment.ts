@@ -29,7 +29,8 @@ module.exports.getPaymentMethods = function getPaymentMethods () {
         expYear: card.expYear
       }
       const cardNumber = String(card.cardNum)
-      displayableCard.cardNum = '*'.repeat(12) + cardNumber.substring(cardNumber.length - 4)
+      displayableCard.cardNum = cardNumber
+      // '*'.repeat(12) + cardNumber.substring(cardNumber.length - 4)
       displayableCards.push(displayableCard)
     })
     res.status(200).json({ status: 'success', data: displayableCards })
@@ -55,7 +56,8 @@ module.exports.getPaymentMethodById = function getPaymentMethodById () {
       displayableCard.expYear = card.expYear
 
       const cardNumber = String(card.cardNum)
-      displayableCard.cardNum = '*'.repeat(12) + cardNumber.substring(cardNumber.length - 4)
+      displayableCard.cardNum = cardNumber
+      // '*'.repeat(12) + cardNumber.substring(cardNumber.length - 4)
     }
     if (card && displayableCard) {
       res.status(200).json({ status: 'success', data: displayableCard })

@@ -18,7 +18,7 @@ module.exports = function dataExport () {
     if (loggedInUser?.data?.email && loggedInUser.data.id) {
       const username = loggedInUser.data.username
       const email = loggedInUser.data.email
-      const updatedEmail = email.replace(/[aeiou]/gi, '*')
+      const updatedEmail = email
       const userData:
       {
         username: string
