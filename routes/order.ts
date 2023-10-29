@@ -195,29 +195,26 @@ function calculateApplicableDiscount (basket: BasketModel, req: Request) {
   return 0
 }
 
-// const ALGORITHM = 'aes-256-cbc'
-// const ENCODING = 'hex'
-// const IV_LENGTH = 16
-// const crypto = require('crypto')
+const ALGORITHM = 'aes-256-cbc'
+const ENCODING = 'hex'
+const IV_LENGTH = 16
+const crypto = require('crypto')
+const salt = crypto.randomBytes(32)
 
-// export const encrypt = (email: string) => {
-//   const salt = crypto.randomBytes(32)
+export const encrypt = (email: string) => {
+  const iv = crypto.randomBytes(IV_LENGTH)
+  const cipher = crypto.createCipheriv(ALGORITHM, Buffer.from(salt), iv)
+  return Buffer.concat([cipher.update(email), cipher.final(), iv]).toString(ENCODING)
+}
 
-//   // const encryptionKey = security.hmac(salt)
+export const decrypt = (email: string) => {
+  const binaryData = Buffer.from(email, ENCODING)
+  const iv = binaryData.slice(-IV_LENGTH)
+  const encryptedData = binaryData.slice(0, binaryData.length - IV_LENGTH)
+  const decipher = crypto.createDecipheriv(ALGORITHM, Buffer.from(salt), iv)
 
-//   const iv = crypto.randomBytes(IV_LENGTH)
-//   const cipher = crypto.createCipheriv(ALGORITHM, Buffer.from(salt), iv)
-//   return Buffer.concat([cipher.update(email), cipher.final(), iv]).toString(ENCODING)
-// }
-
-// export const decrypt = (data: string) => {
-//   const binaryData = new Buffer(data, ENCODING)
-//   const iv = binaryData.slice(-IV_LENGTH)
-//   const encryptedData = binaryData.slice(0, binaryData.length - IV_LENGTH)
-//   const decipher = crypto.createDecipheriv(ALGORITHM, new Buffer(KEY), iv)
-
-//   return Buffer.concat([decipher.update(encryptedData), decipher.final()]).toString()
-// }
+  return Buffer.concat([decipher.update(encryptedData), decipher.final()]).toString()
+}
 
 const campaigns = {
   WMNSDY2019: { validOn: new Date('Mar 08, 2019 00:00:00 GMT+0100').getTime(), discount: 75 },
