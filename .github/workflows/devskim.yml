@@ -10,6 +10,8 @@ jobs:
   build:
     name: Build application
     runs-on: ubuntu-latest
+    steps:
+    - run: echo "Build application"
     
   scan:
     name: Devskim scans
@@ -40,3 +42,5 @@ jobs:
     name: Deploy
     needs: scan
     runs-on: ubuntu-latest
+    steps:
+    - run: echo "Deploy application"
