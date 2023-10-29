@@ -9,16 +9,21 @@ on:
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
-    name: Scan unisa guardian shop
+    name: Scan unisa guardian store
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
           ref: develop
+      - name: Building Docker Node-Goat Image
+        run: docker-compose build
+      - name: Launching the app
+        run: docker-compose up --detach
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@41aee98ebc7cf2802c3beae4e7d4336413a21e43
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://localhost:3000/'
+          issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j -autorun zap.yaml'
+          cmd_options: '-a -j -autorun zap.yaml -failOnAlert -config failRule=HIGH'
