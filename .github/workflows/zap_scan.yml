@@ -23,7 +23,7 @@ jobs:
       - name: Launching the app
         run: docker-compose up --detach
         
-      - name: ZAP Baseline Scan
+      - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.9.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
