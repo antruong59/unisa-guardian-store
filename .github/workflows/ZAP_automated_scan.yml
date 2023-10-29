@@ -21,7 +21,7 @@ jobs:
         uses: zaproxy/action-full-scan@v0.7.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'antruong2001/owasp-zap-docker'
+          docker_name: 'antruong2001/owasp-zap-docker-stable'
           target: 'http://localhost:3000/#/search'
           issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
