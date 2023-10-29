@@ -18,7 +18,7 @@ jobs:
           ref: develop
           
       - name: Docker Node-Goat Image
-        run: docker-compose build
+        run: cd main | docker-compose build
         
       - name: Launching the app
         run: docker-compose up --detach
