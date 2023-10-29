@@ -1,6 +1,10 @@
 name: "OWASP ZAP Baseline Scan"
 
-on: [push]
+on: 
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
   zap_scan:
