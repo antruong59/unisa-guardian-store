@@ -1,4 +1,4 @@
-name: "OWASP ZAP Full Scan"
+name: "OWASP ZAP Baseline Scan"
 
 on:
   push:
@@ -17,8 +17,8 @@ jobs:
         with:
           ref: develop
         
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.7.0
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.9.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'antruong2001/owasp-zap-docker-stable'
