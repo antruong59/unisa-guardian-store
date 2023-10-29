@@ -1,10 +1,11 @@
 name: "OWASP ZAP Baseline Scan"
 
-on: 
+on:
   push:
-    branches: [ develop ]
   pull_request:
-    branches: [ develop ]
+    branches:
+      - main
+      - develop
 
 jobs:
   zap_scan:
@@ -14,7 +15,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: develop
+          ref: main
           
       - name: Docker Node-Goat Image
         run: docker-compose build
