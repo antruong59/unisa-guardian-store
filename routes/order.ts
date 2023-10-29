@@ -158,7 +158,11 @@ module.exports = function placeOrder () {
             addressId: req.body.orderDetails ? req.body.orderDetails.addressId : null,
             orderId: orderId,
             delivered: false,
+<<<<<<< HEAD
             email: email,
+=======
+            email: (email || undefined),
+>>>>>>> 40dee4db67513f80c2dc0e909cd254ffa823a78b
             totalPrice: totalPrice,
             products: basketProducts,
             bonus: totalPoints,
