@@ -2,9 +2,9 @@ name: "OWASP ZAP Baseline Scan"
 
 on: 
   push:
-    branches: [ main ]
+    branches: [ develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ develop ]
 
 jobs:
   zap_scan:
@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: develop
           
       - name: Docker Node-Goat Image
         run: docker-compose build
@@ -29,4 +29,4 @@ jobs:
           target: 'http://localhost:3000/'
           issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j -autorun zap.yaml -failOnAlert -config failRule=HIGH'
+          cmd_options: '-a -j -failOnAlert -config failRule=HIGH'
