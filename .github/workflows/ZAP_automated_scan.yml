@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan unisa guardian shop
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+        with:
+          ref: develop
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.9.0
         with:
