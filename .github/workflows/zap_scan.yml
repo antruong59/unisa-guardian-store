@@ -1,4 +1,4 @@
-name: "OWASP ZAP Baseline Scan"
+name: "Zap Scan"
 
 on:
   push:
