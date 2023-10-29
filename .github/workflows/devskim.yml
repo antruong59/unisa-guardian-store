@@ -23,4 +23,5 @@ jobs:
       uses: microsoft/DevSkim-Action@v1
       with:
           directory-to-scan: routes
+          output-filename: devskim-results.sarif
 
