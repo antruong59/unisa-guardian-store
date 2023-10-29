@@ -19,7 +19,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - run: npm ci
+    - run: npm@5 ci
     - run: .comp4035/tools/dependency-check/bin/dependency-check.sh -s . -o .comp4035/output --disableAssembly
     - name: Run DevSkim scanner
       uses: microsoft/DevSkim-Action@v1
