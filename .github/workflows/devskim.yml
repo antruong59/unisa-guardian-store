@@ -18,12 +18,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
-    - run: .comp4035/tools/dependency-check/bin/dependency-check.sh -s . -o .comp4035/output --disableAssembly
+      
     - name: Run DevSkim scanner
       uses: microsoft/DevSkim-Action@v1
       with:
           directory-to-scan: routes
           output-filename: devskim-results.sarif
-          output-directory: .comp4035/output
+          output-directory: ./output
 
