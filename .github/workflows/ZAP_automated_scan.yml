@@ -18,7 +18,7 @@ jobs:
           ref: main
           
       - name: Docker Node-Goat Image
-        run: docker-compose.yml build
+        run: docker-compose build
         
       - name: Launching the app
         run: docker-compose up --detach
@@ -27,7 +27,8 @@ jobs:
         uses: zaproxy/action-baseline@v0.9.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'http://localhost:3000/'
+          docker_name: 'owasp-zap-docker'
+          target: 'http://localhost:3000/#/search'
           issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -j -failOnAlert -config failRule=HIGH'
