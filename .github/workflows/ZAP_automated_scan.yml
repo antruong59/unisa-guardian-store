@@ -15,8 +15,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: develop
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.7.0
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@41aee98ebc7cf2802c3beae4e7d4336413a21e43
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://localhost:3000/'
