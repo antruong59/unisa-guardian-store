@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: develop
+          ref: main
           
       - name: Docker Node-Goat Image
         run: docker-compose build
@@ -24,10 +24,10 @@ jobs:
         run: docker-compose up --detach
         
       - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@41aee98ebc7cf2802c3beae4e7d4336413a21e43
+        uses: zaproxy/action-baseline@v0.9.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'http://localhost:3000/'
+          target: 'http://localhost:3000'
           issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -j -failOnAlert -config failRule=HIGH'
