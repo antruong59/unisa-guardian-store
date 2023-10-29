@@ -21,7 +21,7 @@ jobs:
         uses: zaproxy/action-baseline@v0.9.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'owasp/owasp-zap-docker'
+          docker_name: 'antruong2001/owasp-zap-docker'
           target: 'http://localhost:3000/#/search'
           issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
