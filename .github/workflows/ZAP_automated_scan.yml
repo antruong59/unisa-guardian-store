@@ -25,4 +25,4 @@ jobs:
           target: 'http://localhost:3000/#/search'
           issue_title: ZAP Test for Guardian Store
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j'
+          cmd_options: '-a -j -autorun zap.yaml'
