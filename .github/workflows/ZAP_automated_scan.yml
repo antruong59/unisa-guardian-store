@@ -14,11 +14,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: develop
-      - name: Building Docker Node-Goat Image
+          ref: main
+          
+      - name: Docker Node-Goat Image
         run: docker-compose build
+        
       - name: Launching the app
         run: docker-compose up --detach
+        
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@41aee98ebc7cf2802c3beae4e7d4336413a21e43
         with:
