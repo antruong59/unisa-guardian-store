@@ -25,7 +25,7 @@ jobs:
         distribution: 'temurin'
         java-version: '11'
 
-    - run: npm install ci
+    - run: npm@5 install ci
     - run: npm ci
     - run: .comp4035/tools/dependency-check/bin/dependency-check.sh -s . -o .comp4035/output --disableAssembly
 
